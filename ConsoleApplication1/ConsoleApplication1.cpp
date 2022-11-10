@@ -128,10 +128,13 @@ int main(int argc)
 			
 			while (str[i] != '}') {
 				
-				while (str[i] != '"' || str[i + 1] != '"') {
+				while (str[i] != '\0' && str[i] != '"' || str[i + 1] != '"') {
 					++i;
-				} 
+				}
 				i += 2;
+
+				if (i > str.size() - 1) 
+					break;
 				
 				while (str[i] != '"') {
 					++i;
