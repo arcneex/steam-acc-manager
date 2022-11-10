@@ -135,7 +135,7 @@ int main()
 		auto acc = accounts[i];
 		SetConsoleTextAttribute(h, 7); std::cout << i << ". ";
 		
-		acc[MostRecent] == "1" ? SetConsoleTextAttribute(h, 9) : acc[RememberPassword] == "1" ? SetConsoleTextAttribute(h, 2) : SetConsoleTextAttribute(h, 7);
+		acc[MostRecent] == "1" ? SetConsoleTextAttribute(h, 9) : acc[AllowAutoLogin] == "1" ? SetConsoleTextAttribute(h, 2) : SetConsoleTextAttribute(h, 7);
 
 		std::cout << acc[AccountName] << std::endl;
 	}
