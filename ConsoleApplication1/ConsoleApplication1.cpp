@@ -87,16 +87,8 @@ bool is_admin() {
 	return fRet;
 }
 
-int main(int argc)
+int main()
 {
-	// check if program was ran as admin
-	if (argc == 1 && !is_admin()) {
-		std::cout << "Please run as admin" << std::endl;
-		Sleep(1000);
-
-		return 0;
-	}
-
 	std::ifstream file(get_steam_reg("SteamPath") + "\\config\\loginusers.vdf");
 	
 	if (!file.is_open()) {
