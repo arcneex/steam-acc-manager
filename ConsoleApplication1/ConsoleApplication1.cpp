@@ -70,23 +70,6 @@ bool is_process_running(const char* process_name) {
 	return false;
 }
 
-// check if program was ran with admin permissions
-bool is_admin() {
-	BOOL fRet = FALSE;
-	HANDLE hToken = NULL;
-	if (OpenProcessToken(GetCurrentProcess(), TOKEN_QUERY, &hToken)) {
-		TOKEN_ELEVATION elevation;
-		DWORD cbSize = sizeof(TOKEN_ELEVATION);
-
-		if (GetTokenInformation(hToken, TokenElevation, &elevation, sizeof(elevation), &cbSize))
-			fRet = elevation.TokenIsElevated;
-	}
-	if (hToken)
-		CloseHandle(hToken);
-
-	return fRet;
-}
-
 int main()
 {
 	std::ifstream file(get_steam_reg("SteamPath") + "\\config\\loginusers.vdf");
