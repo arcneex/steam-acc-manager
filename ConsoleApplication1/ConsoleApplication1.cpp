@@ -298,14 +298,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				set_steam_reg("AutoLoginUser", account[AccountName]);
 
 				if (is_process_running("steam.exe")) {
-					auto steam_shutdown = "start \"\" \"" + get_steam_reg("SteamExe") + "\"" + " -shutdown";
-					system(steam_shutdown.c_str());
+					ShellExecute(NULL, "open", get_steam_reg("SteamExe").c_str(), "-shutdown", NULL, SW_HIDE);
 
 					while (is_process_running("steam.exe"))
 						Sleep(100);
 				}
 
-				system("start steam://open/main");
+				ShellExecute(NULL, "open", "steam://open/main", NULL, NULL, SW_SHOWNORMAL);
 			}
 
 			break;
